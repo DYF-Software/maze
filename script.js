@@ -1,9 +1,21 @@
 const canvas = document.getElementById("mazeCanvas");
 const ctx = canvas.getContext("2d");
 
+// Labirentin tam görünmesi için boyutları ayarla
 const tileSize = 30;
+canvas.width = 20 * tileSize; // Labirentin genişliği
+canvas.height = 16 * tileSize; // Labirentin yüksekliği
+
 const maxMoves = 51;
 let movesLeft = maxMoves;
+
+// Hamle sayısını göstermek için HTML elemanı ekleyelim
+let movesDisplay = document.getElementById("movesLeftDisplay");
+if (!movesDisplay) {
+    movesDisplay = document.createElement("div");
+    movesDisplay.id = "movesLeftDisplay";
+    document.body.appendChild(movesDisplay);
+}
 
 const maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -45,12 +57,8 @@ function drawMaze() {
     ctx.fillStyle = "#ffa500";
     ctx.fillText("⭐", player.x * tileSize + 5, player.y * tileSize + 25);
 
-    ctx.fillStyle = "black";
-    ctx.font = "20px Arial";
-    ctx.fillText(`Kalan Hamle: ${movesLeft}`, 10, canvas.height - 10);
+    updateMovesDisplay();
 }
-
-
 
 function movePlayer(dx, dy) {
     if (movesLeft <= 0) return;
@@ -61,7 +69,8 @@ function movePlayer(dx, dy) {
     if (maze[newY][newX] === 0 || (newX === exit.x && newY === exit.y)) { 
         player.x = newX;
         player.y = newY;
-        movesLeft--; // Her harekette hamle sayısını azalt
+        movesLeft--;
+        updateMovesDisplay();
     }
 
     drawMaze();
@@ -71,6 +80,10 @@ function movePlayer(dx, dy) {
     } else if (movesLeft <= 0) {
         setTimeout(() => alert("Kaybettiniz! Hamle hakkınız bitti."), 10);
     }
+}
+
+function updateMovesDisplay() {
+    movesDisplay.innerHTML = `Kalan Hamle: ${movesLeft}`;
 }
 
 document.addEventListener("keydown", (event) => {

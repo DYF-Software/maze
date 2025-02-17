@@ -20,20 +20,20 @@ canvas {
     display: block;
     border: 3px solid #ff7f00;
     background-color: #222222;
-    margin-top: 50px; /* Hamle sayısı için yukarı boşluk bırak */
+    margin-top: 10px; /* Hamle sayısı ile labirent arasındaki boşluğu küçülttük */
 }
 
-/* Hamle sayısını yukarı sabitle ve küçülmeyi önle */
+/* Hamle sayısını labirentin hemen üstüne koy */
 #movesLeftDisplay {
     position: absolute;
-    top: 10px;
+    margin-top: -600px; /* Hamle sayısını çok yukarıdan biraz aşağıya çektik */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: #ff7f00;
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 127, 0, 0.8);
+    box-shadow: 0 0 8px rgba(255, 127, 0, 0.6);
 }
