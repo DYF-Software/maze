@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    color: white;
+    font-family: "Arial", sans-serif;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    border: 3px solid #ff7f00;
+    background-color: #222222;
+    margin-top: 50px; /* Hamle sayısı için yukarı boşluk bırak */
+}
+
+/* Hamle sayısını yukarı sabitle ve küçülmeyi önle */
+#movesLeftDisplay {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff7f00;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 127, 0, 0.8);
+}
