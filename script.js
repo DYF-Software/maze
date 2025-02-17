@@ -2,9 +2,8 @@ const canvas = document.getElementById("mazeCanvas");
 const ctx = canvas.getContext("2d");
 
 // Labirentin tam görünmesi için boyutları ayarla
-const tileSize = 30;
-canvas.width = 20 * tileSize; // Labirentin genişliği
-canvas.height = 16 * tileSize; // Labirentin yüksekliği
+let tileSize = 30;
+let scaledTileSize = tileSize; // Responsive için ölçekli versiyon
 
 const maxMoves = 51;
 let movesLeft = maxMoves;
@@ -95,4 +94,5 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// resizeCanvas();
 drawMaze();
